@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+// import fetch from "node-fetch";
 
-function App() {
+
+const App = () => {
+
+  const getMessages = async () => {
+    const options = {
+      method: "POST",
+      body: JSON.stringify({
+        message: "how are you?"
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    try {
+      const response = await fetch('http://localhost:8000/completions', options)
+      const data = await response.json()
+      console.log(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="side-bar">
+        <button onClick={getMessages}>+ New Chat </button>
+        <nav>
+          <p>MaestraAI</p>
+        </nav>
+      </section>
+      <section className="main"></section>
     </div>
   );
 }
