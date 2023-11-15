@@ -31,5 +31,5 @@ app.post('/completions', async (req, res) => {
         console.error(error)
     }
 })
-app.listen(PORT, () => console.log('Your server is running on PORT' + PORT))
+app.listen(PORT, () => console.log('Your server is running on PORT ' + PORT))
 
