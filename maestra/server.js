@@ -32,20 +32,36 @@ app.post('/completions', async (req, res) => {
     }
 })
 
+// when triggered, runs lipsync model on the video and audio files (manually) specified.
+// On success, resulting video is stored as maestra/public/result_voice.mp4
 app.post('/wav2lip', (req, res) => {
     const spawn = require('child_process').spawn
-    const scriptPath = "./wav2lip/generate.py" 
-    const videoFile = "test5.mp4"
-    const audioFile = "Recording.mp3"
-    const pyProcess = spawn('python', [scriptPath, videoFile, audioFile])
-    
-    pyProcess.stdout.on('data', (data) => {
-        console.log(data.toString())
-        res.write(data)
-        res.end('end')
+    const path = require('path');
+    const videoFile = "test5.mp4" //specify accordingly in wav2lip folder
+    const audioFile = "Recording.mp3" //specify accordingly in wav2lip folder
+    const scriptPath = path.join(__dirname, 'wav2lip');
+    // res.send({state: "success"}).end();
+
+    console.log("Running lipsync generation model . . .")
+    const pyProcess = spawn("python",
+    [
+        'inference.py',
+        '--checkpoint_path',
+        'checkpoints/wav2lip_gan.pth',
+        '--face',
+        videoFile,
+        '--audio',
+        audioFile
+    ], {cwd: scriptPath})
+
+    pyProcess.on('close', (code) => {
+        if (code === 0) {
+            console.log('Lipsync video has been successfully generated');
+            res.send({state: "success"}).end();
+        } else {
+            console.error(`Child process finished with error code ${code}`);
+        }
     })
-
-
 })
 
 app.post('/completions', async (req, res) => {

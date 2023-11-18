@@ -18,7 +18,7 @@ parser.add_argument('--face', type=str,
 parser.add_argument('--audio', type=str, 
 					help='Filepath of video/audio file to use as raw audio source', required=True)
 parser.add_argument('--outfile', type=str, help='Video path to save result. See default for an e.g.', 
-								default='results/result_voice.mp4')
+								default='../public/result_voice.mp4')
 
 parser.add_argument('--static', type=bool, 
 					help='If True, then use only first video frame for inference', default=False)
@@ -181,7 +181,7 @@ def load_model(path):
 def main():
 	if not os.path.isfile(args.face):
 		raise ValueError('--face argument must be a valid path to video/image file')
-
+		
 	elif args.face.split('.')[1] in ['jpg', 'png', 'jpeg']:
 		full_frames = [cv2.imread(args.face)]
 		fps = args.fps
@@ -216,6 +216,7 @@ def main():
 
 	if not args.audio.endswith('.wav'):
 		print('Extracting raw audio...')
+		
 		command = 'ffmpeg -y -i {} -strict -2 {}'.format(args.audio, 'temp/temp.wav')
 
 		subprocess.call(command, shell=True)
@@ -272,6 +273,7 @@ def main():
 			out.write(f)
 
 	out.release()
+
 
 	command = 'ffmpeg -y -i {} -i {} -strict -2 -q:v 1 {}'.format(args.audio, 'temp/result.avi', args.outfile)
 	subprocess.call(command, shell=platform.system() != 'Windows')
