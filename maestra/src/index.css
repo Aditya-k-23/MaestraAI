@@ -6,3 +6,21 @@ body {
   margin: 0;
   padding: 0;
 }
+
+#messageIn {
+  width: 100%;
+  color: black;
+  border: none;
+  background-color: rgba(255, 255,255, 0.05);
+  padding: 12px 15px;
+  border-radius: 5px;
+}
+
+#messageIn:focus {
+  outline: none;
+}
+
+#submit {
+  color: black;
+  cursor: pointer;
+}
