@@ -2,7 +2,7 @@ import "./SidebarModule.css"
 
 const SidebarModule = (props) => {
     return (
-        <div id="module">
+        <div onClick={()=>{props.generateContent(props.moduleTopic, props.formData)}}id="module">
             <h1>{props.moduleTopic}</h1>
         </div>
     )

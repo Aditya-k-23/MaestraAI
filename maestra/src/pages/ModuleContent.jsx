@@ -1,13 +1,55 @@
 import "../styles/ModuleContent.css";
+import { getContent } from "../api/api.js"
 
-import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useLocation } from "react-router-dom";
 import SidebarModule from "../components/SidebarModule/SidebarModule";
 import Chatbot from "../components/Chatbot/Chatbot";
+import convertTextToAudio from "../utilities/eleven.js";
 
 const ModuleContent = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
     const [isChatbotSelected, setIsChatBotSelected] = useState(false)
+    const [modules, setModules] = useState({moduleOne: "", moduleTwo: "", moduleThree: ""})
+    const [courseTopic, setCourseTopic] = useState("")
+    const [isGeneratingContent, setIsGeneratingContent] = useState(false);
+    
+    useEffect(() => {
+        console.log("location.state.modules: " + location.state.modules)
+        setModules(JSON.parse(location.state.modules));
+        setCourseTopic(location.state.formData.courseTopic);
+    }, []);
+
+    function generateContent(moduleTopic, formData){
+        // where formData = {
+        //     depthOfLearning: '',
+        //     learningFramework: '',
+        //     language: '',
+        //     courseTopic: ''
+        // }
+        setIsGeneratingContent(true);
+
+        getContent(moduleTopic, formData.depthOfLearning, formData.learningFramework, formData.language)
+        .then(async (response) => {
+            console.log("successfully retrieved content str: " + response)
+            
+            // convert response to audio
+            const audioData = await convertTextToAudio(response);
+            
+            // Create a new audio file from the fetched audio data with matching MIME type
+            const audioBlob = new Blob([audioData], { type: 'audio/mp3' });
+            const blobUrl = URL.createObjectURL(audioBlob);
+            let file = new File([audioBlob], "audioOutput");
+            console.log('file:', file);
+
+            // store generated .mp3 file in wav2Lip Folder
+
+            //remove content generation prompt
+            setIsGeneratingContent(false);
+        });
+    }
 
     return (
         <div id="module-content-page-wrapper">
@@ -15,7 +57,7 @@ const ModuleContent = () => {
                 {isChatbotSelected ? 
                     <div id="chatbox-container">
                         <div id="container-header">
-                            <h3 onClick={()=>{navigate("/")}} id="sidebar-course-title">COMPUTER SCIENCE VARIABLES</h3>
+                            <h3 onClick={()=>{navigate("/")}} id="sidebar-course-title">{courseTopic.toUpperCase()}</h3>
                             <button onClick={()=> {setIsChatBotSelected(false)}} class="sidebar-toggle-button">Modules</button>
                         </div>
                         <Chatbot />
@@ -23,12 +65,12 @@ const ModuleContent = () => {
                     :
                     <div id="modules-container">
                         <div id="container-header">
-                            <h3 onClick={()=>{navigate("/")}} id="sidebar-course-title">COMPUTER SCIENCE VARIABLES</h3>
+                            <h3 onClick={()=>{navigate("/")}} id="sidebar-course-title">{courseTopic.toUpperCase()}</h3>
                             <button onClick={()=> {setIsChatBotSelected(true)}} class="sidebar-toggle-button">Chatbot</button>
                         </div>
-                        <SidebarModule moduleTopic={"Variable Scope and Lifetime"} />
-                        <SidebarModule moduleTopic={"Data Types and Variable Declarations"} />
-                        <SidebarModule moduleTopic={"Variable Binding and References"} />
+                        <SidebarModule generateContent={generateContent} formData={location.state.formData} moduleTopic={modules.moduleOne} />
+                        <SidebarModule generateContent={generateContent} formData={location.state.formData} moduleTopic={modules.moduleTwo} />
+                        <SidebarModule generateContent={generateContent} formData={location.state.formData} moduleTopic={modules.moduleThree} />
                     </div>
                 }
             </div>
@@ -39,6 +81,7 @@ const ModuleContent = () => {
                         This browser does not support the video element.
                     </video>
                     <button id="content-container-button" onClick={()=>{ navigate("/videos") }}>VIDEO DEMOS</button>
+                    {isGeneratingContent ? <h2 style={{color: "white"}}>Generating Content . . .</h2> : null}
                 </div>
             </div>
         </div>

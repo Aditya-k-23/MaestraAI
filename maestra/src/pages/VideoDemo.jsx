@@ -10,7 +10,7 @@ const VideoDemo = () => {
         <div id="video-demo-container">
           <div class="video-demo">
             <video id="wav2lip-video-demo-one" controls width="60%" height="40%">
-              <source id="wav2lip-video-src-one" src="result_voice.mp4" type="video/mp4" />
+              <source id="wav2lip-video-src-one" src="samplea.mp4" type="video/mp4" />
               This browser does not support the video element.
             </video>
             <div class="video-demo-details">
@@ -23,7 +23,7 @@ const VideoDemo = () => {
 
           <div class="video-demo">
             <video id="wav2lip-video-demo-two" controls width="60%" height="40%">
-              <source id="wav2lip-video-src-two" src="result_voice.mp4" type="video/mp4" />
+              <source id="wav2lip-video-src-two" src="samplea.mp4" type="video/mp4" />
               This browser does not support the video element.
             </video>
             <div class="video-demo-details">
@@ -37,7 +37,7 @@ const VideoDemo = () => {
 
           <div class="video-demo">
             <video id="wav2lip-video-demo-three" controls width="60%" height="40%">
-              <source id="wav2lip-video-src-three" src="result_voice.mp4" type="video/mp4" />
+              <source id="wav2lip-video-src-three" src="sampled.mp4" type="video/mp4" />
               This browser does not support the video element.
             </video>
             <div class="video-demo-details">
