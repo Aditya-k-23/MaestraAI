@@ -1,8 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import React from 'react';
+import ReactDOM from "react-dom/client";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import UserForm from "./pages/UserForm";
+import ModuleContent from "./pages/ModuleContent";
+import VideoDemo from "./pages/VideoDemo";
+
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path="/" element={<Layout />}> */}
+        <Route index element={<UserForm />} />
+        <Route path="module" element={<ModuleContent />} />
+        <Route path="videos" element={<VideoDemo />} />
+        {/* </Route> */}
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,10 +1,12 @@
 * {
-  color: #fff;
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-color: #0b0f5f;
 }
 
 #messageIn {
@@ -23,4 +25,41 @@ body {
 #submit {
   color: black;
   cursor: pointer;
+}
+
+/* default stylings for HTML elements */
+button {
+  border: none;
+  border-radius: 5px;
+  background-color: #151c9b;
+  color: white; 
+  font-weight: bold;
+  height: 40px;
+  width: 100px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #0a0e48;
+  transform: scale(1.1);
+}
+
+label {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+input {
+  width: 80%;
+  height: 25px;
+  font-size: 18px;
+  border: 1px solid;
+  border-color: #151c9b;
+  border-radius: 1px;
+}
+
+label {
+  width: 80%;
+  margin: 5px 0px;
 }

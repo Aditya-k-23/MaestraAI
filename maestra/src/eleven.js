@@ -9,7 +9,6 @@ const convertTextToAudio = async (textToConvert) => {
     //voiceID?
     const voiceId = '21m00Tcm4TlvDq8ikWAM';
 
-
     const options = {
         method: 'POST',
         url: `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,

@@ -1,4 +1,3 @@
-import './App.css';
 import AudioComponent from './audio';
 import ChatComponent from './chat';
 import LessonPlan from './lessonPlan';
@@ -55,8 +54,7 @@ const App = () => {
       </ContextProvider>
 
       <ChatComponent></ChatComponent>
-
-
+      
     </div>
   );
 }

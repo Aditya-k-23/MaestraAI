@@ -4,8 +4,6 @@ const ChatComponent = () => {
     const [value, setValue] = useState(null)
     const [message, setMessage] = useState(null)
 
-
-
     const getMessages = async () => {
         const options = {
             method: "POST",
