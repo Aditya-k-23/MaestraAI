@@ -1,7 +1,22 @@
 import './App.css';
 import AudioComponent from './audio';
 import ChatComponent from './chat';
+import LessonPlan from './lessonPlan';
+import { React, useState, createContext } from "react";
+
 // import fetch from "node-fetch";
+
+export const Context = createContext();
+
+const ContextProvider = ({ children }) => {
+  const [lessonPlan, setLessonPlan] = useState();
+
+  return (
+      <Context.Provider value={{ lessonPlan, setLessonPlan }}>
+          {children}
+      </Context.Provider>
+  );
+};
 
 
 const App = () => {
@@ -34,8 +49,14 @@ const App = () => {
         </nav>
       </section>
       <section className="main"></section>
-      <AudioComponent></AudioComponent>
+      <ContextProvider>
+        <AudioComponent></AudioComponent>
+        <LessonPlan></LessonPlan>
+      </ContextProvider>
+
       <ChatComponent></ChatComponent>
+
+
     </div>
   );
 }
