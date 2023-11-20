@@ -86,8 +86,7 @@ const UserForm = () => {
                 <div id="user-form-buttons">
                     <button onClick={prepData}>PREP DATA</button>
                     <button type="submit">GENERATE CONTENT</button>
-                </div>
-                
+                </div> 
             </form>
         </div>
     );
