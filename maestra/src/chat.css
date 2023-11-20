@@ -1,0 +1,60 @@
+p {
+    color: black;
+}
+
+button {
+    float: right;
+}
+
+.main {
+    background-color: lightgray;
+    height: 100%;
+    position: relative;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
+#messageIn {
+    width: 70%;
+    color: black;
+    /* border: none; */
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2% 5%;
+    border-radius: 5px;
+}
+
+#messageIn:focus {
+    outline: none;
+}
+
+#submit {
+    color: black;
+    cursor: pointer;
+    height: 100%;
+    /* width: 2vw; */
+    fill: grey;
+    padding: 2%;
+}
+
+.input {
+    bottom: 10%;
+    float: bottom;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    /* background-color: rgba(255, 255, 255, 0.05); */
+    padding: 3% 5%;
+    /* border-radius: 5px; */
+}
+
+.messages {
+    font-size: large;
+    display:flex;
+    justify-content:center;
+    /* top: 15vh; */
+    bottom: 0;
+    height: 50%;
+    text-align: center;
+    align-items: center;   
+}

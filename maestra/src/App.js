@@ -12,9 +12,9 @@ const ContextProvider = ({ children }) => {
   const [lessonPlan, setLessonPlan] = useState();
 
   return (
-      <Context.Provider value={{ lessonPlan, setLessonPlan }}>
-          {children}
-      </Context.Provider>
+    <Context.Provider value={{ lessonPlan, setLessonPlan }}>
+      {children}
+    </Context.Provider>
   );
 };
 
@@ -48,13 +48,15 @@ const App = () => {
           <p>MaestraAI</p>
         </nav>
       </section>
-      <section className="main"></section>
-      <ContextProvider>
+      {/* <ContextProvider>
         <AudioComponent></AudioComponent>
         <LessonPlan></LessonPlan>
-      </ContextProvider>
+      </ContextProvider> */}
 
-      <ChatComponent></ChatComponent>
+
+      <div style={{ height: '' }}>
+        <ChatComponent></ChatComponent>
+      </div>
 
 
     </div>

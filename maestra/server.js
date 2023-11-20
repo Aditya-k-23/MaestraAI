@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(cors())
 
 
-const API_KEY = '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'
+const API_KEY = '';
 
 app.post('/completions', async (req, res) => {
     const options = {
@@ -44,25 +44,27 @@ app.post('/wav2lip', (req, res) => {
 
     console.log("Running lipsync generation model . . .")
     const pyProcess = spawn("python",
-    [
-        'inference.py',
-        '--checkpoint_path',
-        'checkpoints/wav2lip_gan.pth',
-        '--face',
-        videoFile,
-        '--audio',
-        audioFile
-    ], {cwd: scriptPath})
+        [
+            'inference.py',
+            '--checkpoint_path',
+            'checkpoints/wav2lip_gan.pth',
+            '--face',
+            videoFile,
+            '--audio',
+            audioFile
+        ], { cwd: scriptPath })
 
     pyProcess.on('close', (code) => {
         if (code === 0) {
             console.log('Lipsync video has been successfully generated');
-            res.send({state: "success"}).end();
+            res.send({ state: "success" }).end();
         } else {
             console.error(`Child process finished with error code ${code}`);
         }
     })
 })
+
+app.post('/audioUpload', async (req, res) => {})
 
 app.post('/completions', async (req, res) => {
     const options = {

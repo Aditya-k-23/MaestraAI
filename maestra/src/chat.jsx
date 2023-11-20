@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
+import './chat.css';
+
 
 const ChatComponent = () => {
     const [value, setValue] = useState(null)
     const [message, setMessage] = useState(null)
-
-
 
     const getMessages = async () => {
         const options = {
@@ -29,13 +29,14 @@ const ChatComponent = () => {
 
 
     return (
-        <div>
-            <div className="main">
+        <div className="main">
+            <div className="messages">
                 {message && <p>{message.content}</p>}
-
             </div>
-            <input id="messageIn" value={value} onChange={(e) => setValue(e.target.value)} />
-            <div id="submit" onClick={getMessages}>Submit</div>
+            <div className="input">
+                <input id="messageIn" value={value} onChange={(e) => setValue(e.target.value)} />
+                <a id="submit" onClick={getMessages}>↑</a>
+            </div>
         </div>
     );
 

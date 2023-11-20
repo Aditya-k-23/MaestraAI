@@ -5,7 +5,7 @@ const ChatComponent = () => {
     const [value, setValue] = useState(null)
     const [message, setMessage] = useState(null)
 
-    const { setPlan } = useContext(Context);
+    const { setLessonPlan } = useContext(Context);
 
     const generatePlan = async () => {
         const options = {
@@ -21,7 +21,7 @@ const ChatComponent = () => {
             const response = await fetch('http://localhost:8000/completions', options)
             const data = await response.json()
             console.log(data)
-            setPlan(data.choices[0].message)
+            setLessonPlan(data.choices[0].message)
         } catch (error) {
             console.error(error)
         }
