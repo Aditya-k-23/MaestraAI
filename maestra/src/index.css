@@ -6,7 +6,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #0b0f5f;
+  /* background-color: #0b0f5f; */
+  background-color: rgba(173, 216, 230, 0.7);
 }
 
 #messageIn {
@@ -30,18 +31,19 @@ body {
 /* default stylings for HTML elements */
 button {
   border: none;
-  border-radius: 5px;
-  background-color: #151c9b;
-  color: white; 
+  border-radius: 20px;
   font-weight: bold;
+  font-size:medium;
   height: 40px;
   width: 100px;
   cursor: pointer;
   transition: transform 0.3s ease;
+  background-color: rgb(104, 169, 190);
+  color: white;
 }
 
 button:hover {
-  background-color: #0a0e48;
+  background-color: rgb(69, 131, 152);
   transform: scale(1.1);
 }
 
@@ -52,11 +54,11 @@ label {
 
 input {
   width: 80%;
-  height: 25px;
-  font-size: 18px;
-  border: 1px solid;
-  border-color: #151c9b;
-  border-radius: 1px;
+  height: 40px;
+  font-size: 20px;
+  border: 0px solid;
+  background-color: rgba(154, 160, 162, 0.116);
+  border-radius: 5px;
 }
 
 label {

@@ -71,6 +71,8 @@ const ModuleContent = () => {
                         <SidebarModule generateContent={generateContent} formData={location.state.formData} moduleTopic={modules.moduleOne} />
                         <SidebarModule generateContent={generateContent} formData={location.state.formData} moduleTopic={modules.moduleTwo} />
                         <SidebarModule generateContent={generateContent} formData={location.state.formData} moduleTopic={modules.moduleThree} />
+                        <button id="content-container-button" onClick={()=>{ navigate("/videos") }}>Video Demos</button>
+
                     </div>
                 }
             </div>
@@ -80,7 +82,6 @@ const ModuleContent = () => {
                         <source id="content-wav2lip-video-src" src="result_voice.mp4" type="video/mp4" />
                         This browser does not support the video element.
                     </video>
-                    <button id="content-container-button" onClick={()=>{ navigate("/videos") }}>VIDEO DEMOS</button>
                     {isGeneratingContent ? <h2 style={{color: "white"}}>Generating Content . . .</h2> : null}
                 </div>
             </div>

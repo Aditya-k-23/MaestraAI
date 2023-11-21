@@ -49,7 +49,7 @@ const VideoDemo = () => {
             </div>
           </div>
         </div>
-        <button id="video-container-button" onClick={()=>{ navigate("/module") }}>BACK TO MODULE CONTENT</button>
+        <button id="video-container-button" onClick={()=>{ navigate("/module") }}>Back (Module Content)</button>
       </div>
     )
   };
