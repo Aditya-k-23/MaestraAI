@@ -36,7 +36,6 @@ const App = () => {
     }
     try {
       const response = await fetch('http://localhost:8000/completions', options)
-      console.log("reaches here");
       const data = await response.json()
       console.log(data)
     } catch (error) {

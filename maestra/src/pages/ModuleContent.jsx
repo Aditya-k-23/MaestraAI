@@ -33,20 +33,20 @@ const ModuleContent = () => {
 
         getContent(moduleTopic, formData.depthOfLearning, formData.learningFramework, formData.language)
         .then(async (response) => {
-            console.log("successfully retrieved content str: " + response)
+            // console.log("successfully retrieved content str: " + response)
             
-            // convert response to audio
-            const audioData = await convertTextToAudio(response);
+            // // convert response to audio
+            // const audioData = await convertTextToAudio(response);
             
-            // Create a new audio file from the fetched audio data with matching MIME type
-            const audioBlob = new Blob([audioData], { type: 'audio/mp3' });
-            const blobUrl = URL.createObjectURL(audioBlob);
-            let file = new File([audioBlob], "audioOutput");
-            console.log('file:', file);
+            // // Create a new audio file from the fetched audio data with matching MIME type
+            // const audioBlob = new Blob([audioData], { type: 'audio/mp3' });
+            // const blobUrl = URL.createObjectURL(audioBlob);
+            // let file = new File([audioBlob], "audioOutput");
+            // console.log('file:', file);
 
-            // store generated .mp3 file in wav2Lip Folder
+            // // store generated .mp3 file in wav2Lip Foler
 
-            //remove content generation prompt
+            // //remove content generation prompt
             setIsGeneratingContent(false);
         });
     }
