@@ -42,9 +42,9 @@ const VideoDemo = () => {
               This browser does not support the video element.
             </video>
             <div class="video-demo-details">
-              <h3>Module Topic: Economic Recession</h3>
+              <h3>Module Topic: Reasons behind world war II</h3>
               <h3>Depth Of Learning: 7</h3>
-              <h3>Learning Framework: </h3>
+              <h3>Learning Framework: Socratic</h3>
               <h3>Language: Hindi</h3>
               <h3>Racial Background: Indian</h3>
             </div>

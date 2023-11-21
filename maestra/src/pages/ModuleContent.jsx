@@ -30,8 +30,8 @@ const ModuleContent = () => {
         // }
         setIsGeneratingContent(true);
 
-        getContent(moduleTopic, formData.depthOfLearning, formData.learningFramework, formData.language)
-        .then(async (response) => {
+        // getContent(moduleTopic, formData.depthOfLearning, formData.learningFramework, formData.language)
+        // .then(async (response) => {
             // console.log("successfully retrieved content str: " + response)
             
             // // convert response to audio
@@ -46,8 +46,8 @@ const ModuleContent = () => {
             // // store generated .mp3 file in wav2Lip Foler
 
             // //remove content generation prompt
-            setIsGeneratingContent(false);
-        });
+            // setIsGeneratingContent(false);
+        // });
     }
 
     return (
