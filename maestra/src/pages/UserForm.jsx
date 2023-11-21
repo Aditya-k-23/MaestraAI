@@ -109,8 +109,8 @@ const UserForm = () => {
                     />
                 </div>
                 <div id="user-form-buttons">
-                    <button onClick={prepData}>PREP DATA</button>
-                    <button type="submit">GENERATE CONTENT</button>
+                    <button onClick={prepData}>Prep Data</button>
+                    <button type="submit">Generate Content</button>
                 </div> 
                 {isGeneratingModules ? <h2>Generating Modules . . .</h2> : null}
             </form>
