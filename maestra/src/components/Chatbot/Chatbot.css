@@ -37,8 +37,13 @@
 }
 
 #chatbot-intro-message {
-    padding: 1rem;
+    padding: 0px 15px;
+    color: #326d81
 }
 .chatbot-response {
-    padding: 1rem;
+    padding: 0px 15px;
+}
+.chatbot-question {
+    padding: 0px 15px;
+    font-size: 1.2rem;
 }

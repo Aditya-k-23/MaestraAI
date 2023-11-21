@@ -17,8 +17,7 @@ const ModuleContent = () => {
     const [isGeneratingContent, setIsGeneratingContent] = useState(false);
     
     useEffect(() => {
-        console.log("location.state.modules: " + location.state.modules)
-        setModules(JSON.parse(location.state.modules));
+        setModules(location.state.modules);
         setCourseTopic(location.state.formData.courseTopic);
     }, []);
 
@@ -68,10 +67,11 @@ const ModuleContent = () => {
                             <h3 onClick={()=>{navigate("/")}} id="sidebar-course-title">{courseTopic.toUpperCase()}</h3>
                             <button onClick={()=> {setIsChatBotSelected(true)}} class="sidebar-toggle-button">Chatbot</button>
                         </div>
+                        {/* <SidebarModule id="temp-testing-sidebar-module" moduleTopic={"World War II"} /> */}
                         <SidebarModule generateContent={generateContent} formData={location.state.formData} moduleTopic={modules.moduleOne} />
                         <SidebarModule generateContent={generateContent} formData={location.state.formData} moduleTopic={modules.moduleTwo} />
                         <SidebarModule generateContent={generateContent} formData={location.state.formData} moduleTopic={modules.moduleThree} />
-                        <button id="content-container-button" onClick={()=>{ navigate("/videos") }}>Video Demos</button>
+                        <button id="content-container-button" onClick={()=>{ navigate("/videos", {state: {modules: modules, formData: location.state.formData}})}}>Video Demos</button>
 
                     </div>
                 }
@@ -79,7 +79,7 @@ const ModuleContent = () => {
             <div id="content-container">
                 <div id="content-container-wrapper">
                     <video id="content-wav2lip-video" controls width="60%" height="40%">
-                        <source id="content-wav2lip-video-src" src="result_voice.mp4" type="video/mp4" />
+                        <source id="content-wav2lip-video-src" src={location.state.demoFile} type="video/mp4" />
                         This browser does not support the video element.
                     </video>
                     {isGeneratingContent ? <h2 style={{color: "white"}}>Generating Content . . .</h2> : null}

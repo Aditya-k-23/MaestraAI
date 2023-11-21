@@ -35,11 +35,20 @@
     flex-direction: row;
     justify-content: space-between;
     width: 50%;
-    margin: 5rem;
+    margin: 3rem 5rem 2rem 5rem;
 }
 
 label {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
+}
+
+#ethnic-background {
+    border: none;
+    width:80%;
+    height: 3rem;
+    padding: 0.5rem;
+    background-color: rgba(154, 160, 162, 0.116);
+    border-radius: 5px;
 }
 

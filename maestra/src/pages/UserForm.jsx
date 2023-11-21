@@ -14,7 +14,8 @@ const UserForm = () => {
         depthOfLearning: '',
         learningFramework: '',
         language: '',
-        courseTopic: ''
+        courseTopic: '',
+        ethnicBackground: 'americanIndianOrAlaskanNative'
     });
 
     // Handler for form input changes
@@ -33,7 +34,8 @@ const UserForm = () => {
         .then(response => {
             console.log(response)
             // where response is a JSON object cotnaining 3 modules
-            navigate("/module", {state: {modules: response, formData: formData}});
+            const modules = JSON.parse(response);
+            navigate("/module", {state: {modules: modules, formData: formData, demoFile: ""}});
             setIsGeneratingModules(false);
         });
 
@@ -44,10 +46,11 @@ const UserForm = () => {
     const prepData = async (e) => {
         e.preventDefault();
         setFormData({
-            depthOfLearning: '3',
-            learningFramework: 'analogical',
+            depthOfLearning: '4',
+            learningFramework: 'critical thinking',
             language: 'English',
-            courseTopic: 'Ancient History'
+            courseTopic: 'Famous Wars',
+            ethnicBackground:  'Hispanic'
         })
 
         //lessonFramework:
@@ -64,6 +67,17 @@ const UserForm = () => {
     return (
         <div id="user-form-container">
             <form id="user-form" onSubmit={handleSubmit}>
+                <div class="user-form-input">
+                    <label htmlFor="coursetopic">Course Topic:</label>
+                    <input
+                    type="text"
+                    id="courseTopic"
+                    name="courseTopic"
+                    value={formData.courseTopic}
+                    onChange={handleInputChange}
+                    required
+                    />
+                </div>
                 <div class="user-form-input">
                     <label htmlFor="depthOfLearning">Depth Of Learning (1-10):</label>
                     <input
@@ -98,15 +112,22 @@ const UserForm = () => {
                     />
                 </div>
                 <div class="user-form-input">
-                    <label htmlFor="coursetopic">Course Topic:</label>
-                    <input
+                    <label htmlFor="ethnicBackground">What racial or ethnic groups describe you?</label>
+                    <select id="ethnic-background" onChange={handleInputChange}>
+                        <option value="americanIndianOrAlaskanNative">American Indian or Alaskan Native</option>
+                        <option value="asianOrPacificIslander">Asian / Pacific Islander</option>
+                        <option value="blackOrAfricanAmerican">Black or African American</option>
+                        <option value="hispanic">Hispanic</option>
+                        <option value="whiteOrCaucasian">White / Caucasian</option>
+                    </select>
+                    {/* <input
                     type="text"
                     id="courseTopic"
                     name="courseTopic"
                     value={formData.courseTopic}
                     onChange={handleInputChange}
                     required
-                    />
+                    /> */}
                 </div>
                 <div id="user-form-buttons">
                     <button onClick={prepData}>Prep Data</button>
